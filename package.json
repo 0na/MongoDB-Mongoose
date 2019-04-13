@@ -1,0 +1,19 @@
+{
+  "name": "mongodb-mongoose",
+  "version": "1.0.0",
+  "description": "MongoDB and Mongoose first project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0na/MongoDB-Mongoose.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0na/MongoDB-Mongoose/issues"
+  },
+  "homepage": "https://github.com/0na/MongoDB-Mongoose#readme"
+}
