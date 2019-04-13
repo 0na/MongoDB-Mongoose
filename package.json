@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/0na/MongoDB-Mongoose/issues"
   },
-  "homepage": "https://github.com/0na/MongoDB-Mongoose#readme"
+  "homepage": "https://github.com/0na/MongoDB-Mongoose#readme",
+  "dependencies": {
+    "mongoose": "^5.5.1"
+  }
 }
