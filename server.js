@@ -6,45 +6,49 @@ mongoose.connect('mongodb+srv://0na:<password>@cluster0-utgjd.mongodb.net/test?r
     useMongoClient: true
 });
 
-//new user Schema
-const userSchema = new Schema({
-    name: String,
+
+//schemat tworzący użytkowników
+const userSchema = new Schema({ //przechowuje bazowy model
+    name: String, //należy przekazać String itd.
     username: {
         type: String,
         required: true,
         unique: true
-    },
+    }, //unique - musi istnieć jedyne w bazie
     password: {
         type: String,
         required: true
-    },
+    }, //required: true - jest wymagany
     admin: Boolean,
     created_at: Date,
     updated_at: Date
 });
 
-//Mongoose schema method
+//metoda - modyfikuje nam imię użytkownika 
 userSchema.methods.manify = function (next) {
     this.name = this.name + '-boy';
 
     return next(null, this.name);
 };
 
-//pre-save method
+//pre-save method, funkcja, która wykona się przed 
+//zapisaniem rekordu i ustawi odpowiednie pola
 userSchema.pre('save', function (next) {
-    //pobranie aktualnego czasu
+    //pobranie aktualnego czasu:
     const currentDate = new Date();
-
-    //zmiana pola na aktualny czas
+    //zmiana pola na aktualny czas:
     this.updated_at = currentDate;
 
-    if (!this.created_at)
+    if (!this.created_at) {
         this.created_at = currentDate;
+    }
 
+    // next() jest funkcją która przechodzi do następnego hooka do
+    // wykonania przed lub po requeście
     next();
 });
 
-//model based on userSchema
+//model tworzony na podstawie userSchema
 const User = mongoose.model('User', userSchema);
 
 //instancje klasy User
